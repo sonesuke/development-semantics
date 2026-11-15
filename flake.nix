@@ -1,5 +1,5 @@
 {
-  description = "development-semantics: knowledge bundle in Open Knowledge Format (OKF)";
+  description = "my-semantics: knowledge bundle in Open Knowledge Format (OKF)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
