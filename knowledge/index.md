@@ -8,4 +8,4 @@ okf_version: "0.2"
 
 ## トピック
 
-- [Development](/development/index.md) — ソフトウェア開発の慣習と判断基準
+- [Development](./development/index.md) — ソフトウェア開発の慣習と判断基準

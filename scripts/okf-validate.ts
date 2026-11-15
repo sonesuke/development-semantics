@@ -3,9 +3,13 @@
 //   2. Every frontmatter block has a non-empty `type`.
 //   3. index.md has no frontmatter, except `okf_version` at the bundle root.
 //   4. log.md has no frontmatter and its date headings are newest-first.
+// Repository rules (in addition to OKF conformance):
+//   5. Internal links are file-relative and point to existing bundle files.
+//   6. Every Markdown document is reachable from the root index.md.
 
-import { readFile, readdir } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
+import { fromMarkdown } from "mdast-util-from-markdown";
 import { parse } from "yaml";
 
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/;
@@ -78,15 +82,105 @@ function check(file: string, text: string, root: string): string[] {
   }
 }
 
+type MarkdownNode = {
+  type: string;
+  url?: string;
+  identifier?: string;
+  children?: MarkdownNode[];
+};
+
+function* nodes(node: MarkdownNode): Generator<MarkdownNode> {
+  yield node;
+  for (const child of node.children ?? []) yield* nodes(child);
+}
+
+async function checkLinks(
+  file: string,
+  text: string,
+  root: string,
+): Promise<{ errors: string[]; targets: string[] }> {
+  const errors: string[] = [];
+  const targets: string[] = [];
+  const tree = [...nodes(fromMarkdown(text.replace(FRONTMATTER, "")))];
+  const definitions = new Map<string | undefined, string | undefined>();
+  for (const node of tree) {
+    if (node.type === "definition" && !definitions.has(node.identifier)) {
+      definitions.set(node.identifier, node.url);
+    }
+  }
+  for (const node of tree) {
+    if (
+      !["link", "image", "linkReference", "imageReference"].includes(node.type)
+    ) {
+      continue;
+    }
+    const url = node.url ?? definitions.get(node.identifier);
+    if (!url || /^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(url)) continue;
+    if (url.startsWith("/")) {
+      errors.push(`internal link must be file-relative: ${url}`);
+      continue;
+    }
+    let target: string;
+    try {
+      target = path.resolve(
+        path.dirname(file),
+        decodeURIComponent(url.split(/[?#]/)[0]) || path.basename(file),
+      );
+    } catch {
+      errors.push(`invalid internal link encoding: ${url}`);
+      continue;
+    }
+    const relative = path.relative(root, target);
+    if (relative === ".." || relative.startsWith(`..${path.sep}`)) {
+      errors.push(`internal link leaves bundle: ${url}`);
+      continue;
+    }
+    const exists = await stat(target).then(
+      (info) => info.isFile(),
+      () => false,
+    );
+    if (!exists) {
+      errors.push(`internal link target is not a file: ${url}`);
+    } else if (node.type === "link" || node.type === "linkReference") {
+      targets.push(target);
+    }
+  }
+  return { errors, targets };
+}
+
 const roots = process.argv.slice(2);
 if (roots.length === 0) roots.push("knowledge");
 
 let failures = 0;
 for (const root of roots) {
-  for await (const file of walk(root)) {
-    const errors = check(file, await readFile(file, "utf8"), root);
+  const bundleRoot = path.resolve(root);
+  const graph = new Map<string, string[]>();
+  for await (const file of walk(bundleRoot)) {
+    const text = await readFile(file, "utf8");
+    const links = await checkLinks(file, text, bundleRoot);
+    graph.set(file, links.targets);
+    const errors = [...check(file, text, bundleRoot), ...links.errors];
     for (const err of errors) console.error(`${file}: ${err}`);
     failures += errors.length;
+  }
+  const entry = path.join(bundleRoot, "index.md");
+  if (!graph.has(entry)) {
+    console.error(`${entry}: missing bundle entry point`);
+    failures++;
+  }
+  const reachable = new Set<string>();
+  const pending = [entry];
+  while (pending.length) {
+    const file = pending.pop()!;
+    if (reachable.has(file)) continue;
+    reachable.add(file);
+    pending.push(...(graph.get(file) ?? []));
+  }
+  for (const file of graph.keys()) {
+    if (!reachable.has(file)) {
+      console.error(`${file}: unreachable from bundle index.md`);
+      failures++;
+    }
   }
 }
 

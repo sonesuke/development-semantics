@@ -21,12 +21,12 @@ tags: [pull-request, quality, acceptance, review]
 
 \(S_1\) はPRによる変更後の状態である。この式は品質評価の枠組みを定めるものであり、各述語を機械的に判定する完全な手続きを与えるものではない。
 
-| 条件       | 評価すること                                                 | 関連する知識                                                                                                                                                            |
-| ---------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sound      | 構造間のマッピングについて、妥当な論証がある                 | [変更の意味論](/development/pr-request/change-semantics.md)、[論証と検証](/development/pr-request/argumentation.md)                                                     |
-| Adequate   | Requirements、VO、Repository Rulesに対して十分である         | [論証と検証](/development/pr-request/argumentation.md)                                                                                                                  |
-| Structured | 変更と論証が適切に分割・配置され、不要な認知操作を要求しない | [PR分割](/development/pr-request/decomposition.md)、[知識の配置](/development/pr-request/knowledge-placement.md)、[認知負荷](/development/pr-request/cognitive-load.md) |
-| Retained   | 将来必要な知識を所定の経路で取得できる                       | [知識の保持](/development/pr-request/knowledge-retention.md)                                                                                                            |
+| 条件       | 評価すること                                                 | 関連する知識                                                                                          |
+| ---------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Sound      | 構造間のマッピングについて、妥当な論証がある                 | [変更の意味論](./change-semantics.md)、[論証と検証](./argumentation.md)                               |
+| Adequate   | Requirements、VO、Repository Rulesに対して十分である         | [論証と検証](./argumentation.md)                                                                      |
+| Structured | 変更と論証が適切に分割・配置され、不要な認知操作を要求しない | [PR分割](./decomposition.md)、[知識の配置](./knowledge-placement.md)、[認知負荷](./cognitive-load.md) |
+| Retained   | 将来必要な知識を所定の経路で取得できる                       | [知識の保持](./knowledge-retention.md)                                                                |
 
 正当性、構造性、認知効率という観点に加え、マージ後の知識の保持を明示的な受け入れ条件とする。
 
@@ -44,4 +44,4 @@ Repository LoadはRetainedに吸収しない。必要な知識の完全性とは
 
 個人ごとの認知コストの数値化を必須とせず、論証上の依存、参照、目的の連続性などを比較する。同じ論証を維持したまま、目的の切り替えや不必要な前提保持を減らせるなら、その構造を優先できる。
 
-ただし、品質の条件が定まっても、最適な分割や提示が一意に決まるとは限らない。判定基準の厳密化と構造比較の限界は、[未定義事項](/development/pr-request/open-questions.md)で扱う。
+ただし、品質の条件が定まっても、最適な分割や提示が一意に決まるとは限らない。判定基準の厳密化と構造比較の限界は、[未定義事項](./open-questions.md)で扱う。

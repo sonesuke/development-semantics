@@ -6,13 +6,13 @@ Pull Request（PR）の形式モデルと、そこから導く判断基準。
 
 ## モデルの構成
 
-| 層               | 扱うもの                                                    | 知識                                                                                                                                                                                        |
-| ---------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 意味論           | Requirements → Claims → Behavior → Implementation、性質保存 | [変更の意味論](/development/pr-request/change-semantics.md)                                                                                                                                 |
-| 論証と構造化     | 命題・証拠・検証責務、変更単位、依存関係と合成              | [論証と検証](/development/pr-request/argumentation.md)、[PRの物理的構造](/development/pr-request/physical-structure.md)、[PR分割と階層化](/development/pr-request/decomposition.md)         |
-| 提示と知識の配置 | 情報の有効条件、アクセス経路、検証可能性、認知負荷          | [知識の保持](/development/pr-request/knowledge-retention.md)、[知識の配置](/development/pr-request/knowledge-placement.md)、[認知負荷と予定調和](/development/pr-request/cognitive-load.md) |
+| 層               | 扱うもの                                                    | 知識                                                                                                                      |
+| ---------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| 意味論           | Requirements → Claims → Behavior → Implementation、性質保存 | [変更の意味論](./change-semantics.md)                                                                                     |
+| 論証と構造化     | 命題・証拠・検証責務、変更単位、依存関係と合成              | [論証と検証](./argumentation.md)、[PRの物理的構造](./physical-structure.md)、[PR分割と階層化](./decomposition.md)         |
+| 提示と知識の配置 | 情報の有効条件、アクセス経路、検証可能性、認知負荷          | [知識の保持](./knowledge-retention.md)、[知識の配置](./knowledge-placement.md)、[認知負荷と予定調和](./cognitive-load.md) |
 
-[品質評価](/development/pr-request/quality.md)では、正当性・十分性・構造性・知識の保持を受け入れ条件として扱う。Repository Loadは、知識の保持とは別に、最終状態の認知効率として評価する。
+[品質評価](./quality.md)では、正当性・十分性・構造性・知識の保持を受け入れ条件として扱う。Repository Loadは、知識の保持とは別に、最終状態の認知効率として評価する。
 
 ## 利用の順序
 
@@ -26,4 +26,4 @@ Pull Request（PR）の形式モデルと、そこから導く判断基準。
 
 ## 形式化の範囲
 
-本モデルは形式化の途中にある。性質保存、部分構造の閉包性、Behaviorの独立性などの厳密な定義は、[未定義事項](/development/pr-request/open-questions.md)に分離している。
+本モデルは形式化の途中にある。性質保存、部分構造の閉包性、Behaviorの独立性などの厳密な定義は、[未定義事項](./open-questions.md)に分離している。

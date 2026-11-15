@@ -50,7 +50,7 @@ S_0\xrightarrow{P}S_1
 | アクセス経路 | 将来、誰がどこからその情報を探すか           |
 | 検証可能性   | その知識を機械的に検証・維持できるか         |
 
-「状態についての知識だからCode Comment」という結論は、この第一段階だけからは導けない。[Working Tree・Git History・PR Record](/development/pr-request/knowledge-retention.md)の経路を踏まえ、テスト、設定、設計文書、Code Comment、Commit Message、Body、Inline Comment、CIなどへの配置を考える。
+「状態についての知識だからCode Comment」という結論は、この第一段階だけからは導けない。[Working Tree・Git History・PR Record](./knowledge-retention.md)の経路を踏まえ、テスト、設定、設計文書、Code Comment、Commit Message、Body、Inline Comment、CIなどへの配置を考える。
 
 ## 実行可能な制約と説明
 
@@ -71,4 +71,4 @@ Executable Check、Code Comment、Documentationを全順序にはしない。そ
 
 例えば、「CIのジョブ名がルールセットと一致している」という性質は、コメントで宣言するより、一致を自動検証する方が適する場合がある。Colimaを選んだライセンス上の理由が将来にも必要なら保持するが、その設定行の直上に置くことが常に最適とは限らない。
 
-これらは配置判断の例であり、特定のPRや実際の設定について検証済みであることを意味しない。配置の目的は、[必要な知識の保持](/development/pr-request/knowledge-retention.md)と、[Review Load・Repository Load](/development/pr-request/cognitive-load.md)の双方における不要な探索や冗長性の抑制である。
+これらは配置判断の例であり、特定のPRや実際の設定について検証済みであることを意味しない。配置の目的は、[必要な知識の保持](./knowledge-retention.md)と、[Review Load・Repository Load](./cognitive-load.md)の双方における不要な探索や冗長性の抑制である。

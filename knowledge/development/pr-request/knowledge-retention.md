@@ -13,7 +13,7 @@ Retainedは、マージ後に必要な知識が失われず、将来の利用者
 \operatorname{Retained}(S_1,K_{\mathrm{required}})
 \]
 
-\(S_1\) は変更後の状態、\(K_{\mathrm{required}}\) は将来必要となる知識である。この表記では、利用者と想定するアクセス経路を評価の前提としている。必要な知識の範囲と、経路の成立条件の厳密化は[未定義事項](/development/pr-request/open-questions.md)として残る。
+\(S_1\) は変更後の状態、\(K_{\mathrm{required}}\) は将来必要となる知識である。この表記では、利用者と想定するアクセス経路を評価の前提としている。必要な知識の範囲と、経路の成立条件の厳密化は[未定義事項](./open-questions.md)として残る。
 
 すべての知識がWorking Tree内に直接記述されていることは要求しない。外部仕様やPR Recordなどへの明示的な参照によって、所定の経路で取得できる場合もある。ただし、情報がどこかに存在することだけでは、アクセス可能性は示せない。
 
@@ -41,6 +41,6 @@ Commit Messageには、将来の利用者が変更理由を理解するための
 
 ## RetainedとRepository Load
 
-Retainedと[Repository Load](/development/pr-request/cognitive-load.md)は異なる。必要な設計理由がすべて残っていても、多数のファイルに重複し、どれを参照すべきか判断しにくければ、保持の条件を満たしていても理解の負荷は高くなり得る。
+Retainedと[Repository Load](./cognitive-load.md)は異なる。必要な設計理由がすべて残っていても、多数のファイルに重複し、どれを参照すべきか判断しにくければ、保持の条件を満たしていても理解の負荷は高くなり得る。
 
 Retainedを受け入れ条件とし、取得・理解・利用に必要な負荷は、最終状態の構造的品質として別途評価する。
