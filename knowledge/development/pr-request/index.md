@@ -9,4 +9,6 @@ Pull Request（PR）の形式モデルと、そこから導く性質、構成を
 - [構成戦略](./strategies.md) — PR・Commitの分割、提示順序、情報と証拠の配置を選ぶ
 - [未定義事項](./open-questions.md) — 判定条件が定まっていない概念と、次に形式化する課題
 
+参照する知識体系：[Verification](../verification/index.md)、[Validation](../validation/index.md)。
+
 定義を置くこと、そこから性質を導くこと、具体的な構成を選ぶことを分ける。モデルは形式化の途中にあり、戦略の採用だけで品質や負荷の改善を保証しない。

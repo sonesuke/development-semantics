@@ -12,10 +12,12 @@ tags: [pull-request, strategy, decomposition, knowledge, presentation]
 ## 選択の手順
 
 1. 要求をClaimsへ分解し、BehaviorとImplementationへの対応を示す。
-2. 変更と維持すべき性質からVOを導出し、網羅性と証拠の十分性を確認する。
+2. [Verificationのモデル](../verification/model.md)に従い、変更と維持すべき性質からVOを導出し、網羅性と証拠の十分性を確認する。
 3. 論証とBehaviorの境界をもとにPRとCommitの分割候補を作る。
 4. 情報の有効条件・アクセス経路・検証可能性から配置を選ぶ。
 5. 各候補の受け入れ条件を確認し、Review LoadとRepository Loadを別々に比較する。
+
+要求や利用上の前提を変更する場合は、[Validation](../validation/model.md)による目的への適合の評価も行い、その結果をClaimsとVOに反映する。
 
 必要な論証と証拠は要求・変更・既存の性質・Repository Rulesに依存する。すべてのPRに同じ文書量や形式的証明を要求しない。
 
