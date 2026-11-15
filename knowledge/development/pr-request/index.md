@@ -1,0 +1,29 @@
+# Pull Request
+
+Pull Request（PR）の形式モデルと、そこから導く判断基準。
+
+よいPRとは、要求から実装までの構造的な対応関係について、その正当性を必要十分な証拠で示し、人間が自然に理解できるように構成され、将来必要な知識へのアクセスも維持された変更である。
+
+## モデルの構成
+
+| 層               | 扱うもの                                                    | 知識                                                                                                                                                                                        |
+| ---------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 意味論           | Requirements → Claims → Behavior → Implementation、性質保存 | [変更の意味論](/development/pr-request/change-semantics.md)                                                                                                                                 |
+| 論証と構造化     | 命題・証拠・検証責務、変更単位、依存関係と合成              | [論証と検証](/development/pr-request/argumentation.md)、[PRの物理的構造](/development/pr-request/physical-structure.md)、[PR分割と階層化](/development/pr-request/decomposition.md)         |
+| 提示と知識の配置 | 情報の有効条件、アクセス経路、検証可能性、認知負荷          | [知識の保持](/development/pr-request/knowledge-retention.md)、[知識の配置](/development/pr-request/knowledge-placement.md)、[認知負荷と予定調和](/development/pr-request/cognitive-load.md) |
+
+[品質評価](/development/pr-request/quality.md)では、正当性・十分性・構造性・知識の保持を受け入れ条件として扱う。Repository Loadは、知識の保持とは別に、最終状態の認知効率として評価する。
+
+## 利用の順序
+
+1. 要求をClaimsへ分解し、BehaviorとImplementationへの対応を示す。
+2. 変更と維持すべき性質からVerification Obligationsを導出し、証拠で支持する。
+3. 論証とBehaviorの境界をもとに、PRとCommitの分割を考える。
+4. 知識の有効条件・アクセス経路・検証可能性から配置を決める。
+5. 受け入れ条件を確認し、不要な切り替え・記憶・推論を減らす。
+
+この順序はモデルを利用するための案内であり、すべてのPRに同じ文書量や形式的証明を要求するものではない。必要な論証と証拠は、要求・変更・既存の性質・Repository Rulesに依存する。
+
+## 形式化の範囲
+
+本モデルは形式化の途中にある。性質保存、部分構造の閉包性、Behaviorの独立性などの厳密な定義は、[未定義事項](/development/pr-request/open-questions.md)に分離している。

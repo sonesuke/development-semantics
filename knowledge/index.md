@@ -8,4 +8,4 @@ okf_version: "0.2"
 
 ## トピック
 
-- [Pull Request](/pull-request/index.md) — Pull Request の形式モデルとガイドライン
+- [Development](/development/index.md) — ソフトウェア開発の慣習と判断基準
