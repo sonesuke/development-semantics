@@ -7,4 +7,9 @@ jobs:
     permissions:
       contents: read
     steps:
-      - run: echo "CI is running and always passing!"
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v23
+      - name: Install dependencies
+        run: nix develop --command npm ci
+      - name: Check formatting, lint and OKF bundle
+        run: nix develop --command npm run check
