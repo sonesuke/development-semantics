@@ -1,4 +1,4 @@
-# development-semantics
+# my-semantics
 
 ソフトウェア開発の知識を [Open Knowledge Format (OKF) v0.2](https://github.com/GoogleCloudPlatform/knowledge-catalog) で記述するリポジトリ。
 
