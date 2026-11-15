@@ -14,11 +14,14 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        # Node.js runs prettier, markdownlint-cli2 and the OKF validator (see package.json).
+        # Node.js runs prettier, markdownlint-cli2 and the OKF validator (see package.json);
+        # nixfmt, statix and deadnix format and lint the Nix files.
         devShells.default = pkgs.mkShell {
           packages = [
             pkgs.nodejs
             pkgs.nixfmt
+            pkgs.statix
+            pkgs.deadnix
           ];
         };
 
