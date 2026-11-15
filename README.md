@@ -5,7 +5,7 @@
 ## 構成
 
 - `knowledge/` — OKF バンドル本体 (入口は [`knowledge/index.md`](knowledge/index.md))
-- `scripts/okf-validate.ts` — OKF 適合性チェック
+- `scripts/okf-validate.ts` — OKF 適合性と、内部リンクの相対パス・参照先の存在・入口から全 Markdown 文書への到達性をチェック
 
 ## 開発環境
 
@@ -23,5 +23,5 @@ npm run check    # 整形チェック・lint (Markdown・Nix)・型チェック�
 ## 知識の書き方
 
 - 1 ファイル = 1 concept。frontmatter に `type` (必須)、`title`、`description`、`tags` を書く。
-- リンクはバンドルルートからの絶対パス (`/<topic>/<concept>.md`) で書く。
+- 内部リンクはリンクを書いたファイルを起点とする相対パス (`./other.md`、`../index.md`) で書く。
 - 追加・変更したら各ディレクトリの `index.md` を更新する。変更履歴は git で管理する。

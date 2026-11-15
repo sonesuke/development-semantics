@@ -7,7 +7,7 @@ tags: [pull-request, argumentation, verification, evidence]
 
 # PRの論証と検証
 
-論証とは、[構造間のマッピング](/development/pr-request/change-semantics.md)が要求される性質を保存していることを、命題・前提・推論・証拠によって支持するものである。
+論証とは、[構造間のマッピング](./change-semantics.md)が要求される性質を保存していることを、命題・前提・推論・証拠によって支持するものである。
 
 論証グラフを次のように表す。
 
@@ -53,8 +53,8 @@ DeferredとWaivedはVerifiedを意味しない。延期・免除の理由や条�
 
 テスト成功は、実装の振る舞いに関する証拠である。すべての状態についての形式的証明とは区別する。また、個別の証拠が強くても、必要なVOが欠けていればPR全体の十分性は得られない。
 
-設計説明・テスト・形式的証明は、支持できる命題と前提が異なる。何を証拠として受け入れるかは、対象の性質とRepository Rulesに依存する。一般的な十分性の基準は[未定義事項](/development/pr-request/open-questions.md)である。
+設計説明・テスト・形式的証明は、支持できる命題と前提が異なる。何を証拠として受け入れるかは、対象の性質とRepository Rulesに依存する。一般的な十分性の基準は[未定義事項](./open-questions.md)である。
 
 ## 証拠と配置
 
-証拠はBodyだけに集約する必要はない。Diff、テスト、CI Results、設計文書、Commentsなどを明示的に参照し、命題から証拠を追跡できるようにする。[物理的な配置](/development/pr-request/physical-structure.md)と論証上の役割は分離する。
+証拠はBodyだけに集約する必要はない。Diff、テスト、CI Results、設計文書、Commentsなどを明示的に参照し、命題から証拠を追跡できるようにする。[物理的な配置](./physical-structure.md)と論証上の役割は分離する。
