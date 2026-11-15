@@ -2,10 +2,10 @@
 okf_version: "0.2"
 ---
 
-# Development Semantics
+# My Semantics
 
 ソフトウェア開発の慣習・判断基準を、論理的な条件から導ける形で [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog) に記述した知識バンドル。
 
 ## トピック
 
-- [Pull Request](/pull-request/index.md) — Pull Request の形式モデルとガイドライン
+- [Development](/development/index.md) — ソフトウェア開発の慣習と判断基準
