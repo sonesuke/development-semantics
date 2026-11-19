@@ -1,0 +1,5 @@
+name = "MySemantics"
+defaultTargets = ["Knowledge"]
+
+[[lean_lib]]
+name = "Knowledge"

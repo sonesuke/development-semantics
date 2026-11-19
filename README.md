@@ -5,6 +5,7 @@
 ## 構成
 
 - `knowledge/` — OKF バンドル本体 (入口は [`knowledge/index.md`](knowledge/index.md))
+- `src/` — `knowledge/` のモデルと定理を Lean 4 で形式化したもの (`npm run lean` でビルド・証明検査。CI では実行しない)
 - `scripts/okf-validate.ts` — OKF 適合性と、内部リンクの相対パス・参照先の存在・入口から全 Markdown 文書への到達性をチェック
 
 ## 開発環境
@@ -12,7 +13,7 @@
 [Nix](https://nixos.org/) (flakes 有効) が必要。
 
 ```sh
-nix develop      # Node.js と Nix 用ツール (nixfmt・statix・deadnix) が入った開発シェルに入る
+nix develop      # Node.js・elan (Lean 4) と Nix 用ツール (nixfmt・statix・deadnix) が入った開発シェルに入る
 npm ci           # prettier / markdownlint-cli2 / TypeScript / yaml を入れる
 npm run format   # 整形
 npm run check    # 整形チェック・lint (Markdown・Nix)・型チェック・OKF 検証 (CI と同じ)
