@@ -15,13 +15,15 @@
       in
       {
         # Node.js runs prettier, markdownlint-cli2 and the OKF validator (see package.json);
-        # nixfmt, statix and deadnix format and lint the Nix files.
+        # nixfmt, statix and deadnix format and lint the Nix files;
+        # elan installs the Lean toolchain pinned in src/lean-toolchain.
         devShells.default = pkgs.mkShell {
           packages = [
             pkgs.nodejs
             pkgs.nixfmt
             pkgs.statix
             pkgs.deadnix
+            pkgs.elan
           ];
         };
 
