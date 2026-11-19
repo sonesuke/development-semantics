@@ -19,7 +19,7 @@ tags: [pull-request, strategy, decomposition, knowledge, presentation]
 
 要求や利用上の前提を変更する場合は、[Validation](../validation/model.md)による目的への適合の評価も行い、その結果をClaimsとVOに反映する。
 
-必要な論証と証拠は要求・変更・既存の性質・Repository Rulesに依存する。すべてのPRに同じ文書量や形式的証明を要求しない。
+必要な論証と証拠は要求・変更・既存の性質・[Repository Rules](../repository/model.md#repository-rules)に依存する。すべてのPRに同じ文書量や形式的証明を要求しない。
 
 ## PR分割と階層化
 
@@ -104,7 +104,7 @@ S_0\xrightarrow{P}S_1
 
 ### 有効条件を明示する
 
-有効性の定義は[モデル](./model.md#情報の有効条件)に従う。
+有効性の定義は[Repositoryのモデル](../repository/model.md#情報の有効条件)に従う。
 
 例えば、「この設定では、未宣言のcaskと関連データが削除される」は設定の動作についての知識であり、将来のコード理解にも必要となる。一方、「今回の変更では、削除対象のcaskがないことを確認した」は特定の遷移に関する検証結果であり、PRに属する。
 
@@ -126,7 +126,7 @@ S_0\xrightarrow{P}S_1
 | アクセス経路 | 将来、誰がどこからその情報を探すか           |
 | 検証可能性   | その知識を機械的に検証・維持できるか         |
 
-「状態についての知識だからCode Comment」という結論は、この第一段階だけからは導けない。[Working Tree・Git History・PR Record](./model.md#知識の保持)の経路を踏まえ、テスト、設定、設計文書、Code Comment、Commit Message、Body、Inline Comment、CIなどへの配置を考える。
+「状態についての知識だからCode Comment」という結論は、この第一段階だけからは導けない。[Working Tree・Git History・PR Record](../repository/model.md#知識へのアクセス層)の経路を踏まえ、テスト、設定、設計文書、Code Comment、Commit Message、Body、Inline Comment、CIなどへの配置を考える。
 
 ### 実行可能な制約と説明
 
@@ -147,7 +147,7 @@ Executable Check、Code Comment、Documentationを全順序にはしない。そ
 
 例えば、「CIのジョブ名がルールセットと一致している」という性質は、コメントで宣言するより、一致を自動検証する方が適する場合がある。Colimaを選んだライセンス上の理由が将来にも必要なら保持するが、その設定行の直上に置くことが常に最適とは限らない。
 
-これらは配置判断の例であり、特定のPRや実際の設定について検証済みであることを意味しない。配置の目的は、[必要な知識の保持](./model.md#知識の保持)と、[Review Load・Repository Load](./model.md#認知負荷)の双方における不要な探索や冗長性の抑制である。
+これらは配置判断の例であり、特定のPRや実際の設定について検証済みであることを意味しない。配置の目的は、[必要な知識の保持](../repository/model.md#知識の保持)と、[Review Load](./model.md#review-load)・[Repository Load](../repository/model.md#repository-load)の双方における不要な探索や冗長性の抑制である。
 
 ## 証拠への参照
 
