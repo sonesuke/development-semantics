@@ -21,7 +21,7 @@ Verificationでは、要求が目的に適していることを今回の検討�
 
 ## 要求から実装への対応
 
-要求から実装への対応を、内部関係を持つ四つの構造と、それらの間のマッピングとして扱う。
+要求から実装への対応を、[Artifactのモデル](../artifact/model.md)のRequirements・Behavior・Implementationと、検証のために置くClaimsの四つの構造、それらの間のマッピングとして扱う。
 
 \[
 \mathcal R \xrightarrow{M_{RQ}} \mathcal Q
@@ -29,14 +29,14 @@ Verificationでは、要求が目的に適していることを今回の検討�
 \xrightarrow{M_{BI}} \mathcal I
 \]
 
-| 記号           | 構造           | 主な要素                     |
-| -------------- | -------------- | ---------------------------- |
-| \(\mathcal R\) | Requirements   | 要求、制約、依存関係         |
-| \(\mathcal Q\) | Claims         | 命題、前提、補題、含意       |
-| \(\mathcal B\) | Behavior       | 状態、操作、遷移、不変条件   |
-| \(\mathcal I\) | Implementation | コード、型、データ、実行関係 |
+| 記号           | 構造           | 定義                                            |
+| -------------- | -------------- | ----------------------------------------------- |
+| \(\mathcal R\) | Requirements   | [Artifact](../artifact/model.md#requirements)   |
+| \(\mathcal Q\) | Claims         | 命題、前提、補題、含意。Verificationで置く      |
+| \(\mathcal B\) | Behavior       | [Artifact](../artifact/model.md#behavior)       |
+| \(\mathcal I\) | Implementation | [Artifact](../artifact/model.md#implementation) |
 
-各構造は要素の集合だけでなく内部関係を持つ。マッピングは多対多になり得るため、一般には関数ではなく関係として扱う。対応先が存在することと、その対応が正しいことは区別する。
+Claimsは、要求を検証可能な命題へ分解した論証のための構造であり、評価対象そのものではない。マッピングは多対多になり得るため、一般には関数ではなく関係として扱う。対応先が存在することと、その対応が正しいことは区別する。
 
 ### RequirementsからClaimsへ
 
@@ -56,20 +56,9 @@ q_1 \land q_2 \land q_3 \Rightarrow r
 
 ### ClaimsからBehaviorへ
 
-Claimsを、状態と操作に関する性質へ翻訳する。
+Claimsを、[Behavior](../artifact/model.md#behavior) \(\mathcal B=(S,O,\delta)\) の状態と操作に関する性質へ翻訳する。
 
-\[
-\mathcal B=(S,O,\delta)
-\]
-
-例えば、残高の非負性を有効な状態の集合 \(S_{\mathrm{valid}}\) として表し、遷移による保存を要求する。
-
-\[
-\forall s\in S_{\mathrm{valid}},\ \forall o\in O,
-\quad \delta(s,o)\in S_{\mathrm{valid}}
-\]
-
-この表現は、\(\delta\) が対象操作について定義されていることを前提とする。操作に事前条件がある場合は、適用可能な操作を量化の対象にするか、拒否される操作の振る舞いもモデル化する。
+例えば、残高の非負性を状態についての性質として表す。翻訳が忠実であるとは、翻訳先の性質が成り立つときに元のClaimも成り立つことである。
 
 ### BehaviorからImplementationへ
 

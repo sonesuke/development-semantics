@@ -7,7 +7,7 @@ tags: [pull-request, theorem, quality, cognition]
 
 # PRのモデルから導く定理
 
-記号と品質条件は[モデル](./model.md)に従う。以下は定義と明示した仮定からの帰結であり、具体的なPRが仮定を満たすかは別途確認する。
+記号と品質条件は[モデル](./model.md)に、リポジトリ状態とRepository Loadは[Repositoryのモデル](../repository/model.md)に従う。以下は定義と明示した仮定からの帰結であり、具体的なPRが仮定を満たすかは別途確認する。
 
 ## 同じ最終状態とアクセス経路でのRepository Load
 
@@ -19,7 +19,7 @@ tags: [pull-request, theorem, quality, cognition]
 H_{\mathrm{repo}}(S_f;K,T) = H_{\mathrm{repo}}(S_f;K,T)
 \]
 
-**証明**：Repository Loadの評価に与える最終状態、アクセス経路、知識、タスクがすべて同じなので、同じ評価値になる。
+**証明**：[Repository Load](../repository/model.md#repository-load)は状態・知識・タスクだけで定まり、その状態に至った変更の経緯には依存しない。二つの構成で最終状態（アクセス経路を含む）・知識・タスクがすべて同じなので、同じ評価値になる。
 
 これは評価対象を固定したことによる帰結であり、実測値が必ず一致するという経験則ではない。Squash Mergeなどによって残る履歴や参照経路が変わる場合、仮定を満たさない。Review LoadはPR群と提示・閲覧の順序にも依存するため、この結論から同値性は導けない。
 
